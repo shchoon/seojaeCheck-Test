@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import Logo from "/public/Logo.png";
 import BookIcon from "/public/icons/Books.png";
@@ -9,9 +9,12 @@ import BookIcon from "/public/icons/Books.png";
 import { useSearchStore } from "@/stores/searchStore";
 import SearchBar from "./SearchBar";
 import { RevalidateTopic } from "../action/revalidateTopic";
+import { todayTopic } from "@/libs/apis/todayTopic";
 
 export default function Navbar() {
   const router = useRouter();
+  const pathName = usePathname();
+  console.log(pathName);
   const { resetSearchState } = useSearchStore();
 
   return (
@@ -25,9 +28,12 @@ export default function Navbar() {
         priority={true}
         style={{ width: 75, height: 75 }}
         onClick={async () => {
-          await RevalidateTopic();
-          // await resetSearchState();
-          // await router.push("/home");
+          if (pathName !== "/home") {
+            await RevalidateTopic();
+            await todayTopic();
+            resetSearchState();
+            router.push("/home");
+          }
         }}
       />
       <SearchBar />
