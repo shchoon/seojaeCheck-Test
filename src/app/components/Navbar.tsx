@@ -24,9 +24,10 @@ export default function Navbar() {
         height={75}
         priority={true}
         style={{ width: 75, height: 75 }}
-        onClick={() => {
-          RevalidateTopic();
-          resetSearchState();
+        onClick={async () => {
+          await RevalidateTopic();
+          // await resetSearchState();
+          // await router.push("/home");
         }}
       />
       <SearchBar />

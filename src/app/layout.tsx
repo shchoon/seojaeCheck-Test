@@ -24,11 +24,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log("layout");
   return (
     <html lang="ko">
-      {/* <head>
+      <head>
         <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />
-      </head> */}
+      </head>
       <body className={`${myFont.className} bg-neutral-100`}>
         <div id="global-modal" />
         <Navbar />
