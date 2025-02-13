@@ -1,3 +1,4 @@
+"use server";
 import topics from "@/data/topics";
 
 export const todayTopic = async () => {
