@@ -9,7 +9,6 @@ import BookIcon from "/public/icons/Books.png";
 import { useSearchStore } from "@/stores/searchStore";
 import SearchBar from "./SearchBar";
 import { RevalidateTopic } from "../action/revalidateTopic";
-import { todayTopic } from "@/libs/apis/todayTopic";
 
 export default function Navbar() {
   const router = useRouter();
@@ -30,7 +29,6 @@ export default function Navbar() {
         onClick={async () => {
           if (pathName !== "/home") {
             await RevalidateTopic();
-            await todayTopic();
             resetSearchState();
             router.push("/home");
           }
