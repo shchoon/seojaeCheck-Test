@@ -14,7 +14,6 @@ export default function Carousel({
   isModal: boolean;
 }) {
   const { isOpen, openModalWithData } = useModalStore();
-
   return (
     <section className="group relative z-0 flex h-[213px] w-full items-center overflow-hidden border-2 border-neutral-200">
       <div
